@@ -9,28 +9,35 @@
 // }
 
 class Card {
-	constructor(number, suit) {
+	constructor(number, suit, value, suitSymbol) {
 		this.number = number;
 		this.suit = suit;
+			//if statement for emojis
+		this.value = value;
+		this.suitSymbol = suitSymbol;
 	}
 }
 
 class Deck {
 	constructor() {
 		this.deck = [];
-
-		const suit = ['Clubs', 'Diamonds', 'Hearts', 'Spades'];
+		const suit = ['Clubs', 'Diamonds', 'Hearts', 'Spades']
 		const number = ['2' ,'3', '4', '5', '6', '7', '8','9', '10', 'Jack', 'Queen', 'King', 'Ace'];
-		
-		for(let j = 0; j < number.length; j++) {
+		// const value == 2 -- 14
+
+			let x = 0;
 			for(let i = 0; i < suit.length; i++) {
-					const newCard = new Card(number[j], suit[i])
+				let currentSuit = suit[i]
+				for(let j = 0; j < number.length; j++) {
+					const newCard = new Card(number[j], currentSuit, (j + 2))
+					x++
 					this.deck.push(newCard);
+				}
 			}
 		}
-	}
+		
 
-	shuffle = (array) => {
+	shuffle (array) {
 		let i = array.length
 		let j = 0
 		let temp = null
@@ -44,31 +51,35 @@ class Deck {
 			return array;
 	}
 
-	dealDeck() {
-		for(let i = 0; i < 25; i++){
-			for(let j = 26; i < 52; j++)
-			player1Deck.push(d[i]);
+	// dealDeck () {
 
-			player2Deck.push(d[j]);
-			}
-		}
-
-	}
+	// 	// deal to player 1
+	// 	for(let i = 0; i < 25; i++){
+	// 		player1Deck.push(d[i]);	
+	// 		console.log(player1Deck);		
+	// 	}
+	// 	// deal to player 2 using another separate for loop 
+	// 	for(let j = 26; i < 52; j++){
+	// 		player2Deck.push(d[j]);
+	// 		console.log(player2Deck);
+	// 	}
+	// }
+}
 
 
 
 const d = new Deck();
 
-console.log(d.deck);
+//console.log(d.deck);
 
 d.shuffle(d.deck);
 
-console.log(d.deck);
+//console.log(d.deck);
 
 //- - - - - - - - - - - - - - - - - - - - - GAME
 const game = {
 	gameOn: false,
-	player1Card: [].
+	player1Card: [],
 	player2Card: [],
 	player1Deck: [],
 	player2Deck: [],
@@ -79,11 +90,42 @@ const game = {
 		if(game.gameOn === false){
 			game.gameOn = true
 		}
-	}
-		checkWinner(){
+	},
+	dealDeck () {
 
+		// deal to player 1
+		for(let i = 0; i < 25; i++){
+			player1Deck.push(d[i]);	
+			console.log(player1Deck);		
+		}
+		// deal to player 2 using another separate for loop 
+		for(let j = 26; i < 52; j++){
+			player2Deck.push(d[j]);
+			console.log(player2Deck);
 		}
 	}
+
+//moves card from game.player1Deck to game.player1Card
+	// playCard() {
+	// 	game.player1Card.push(player1Deck[0])
+	// 	game.player2Card.push(player2Deck[0])
+
+	// },
+
+	// checkHandWinner(){
+	// 	if(game.player1Card > game.player2Card){
+
+	// 	}else if(game.player1Card < game.player2Card){
+
+
+	// 	}else if(game.player1Card == game.player2Card){
+
+	// 	}
+	// },
+	// declareWinner(){
+	// 	// if 
+	// }
+}
 
 
 
@@ -104,5 +146,13 @@ $('.player2').on('click', () => {
 
 
 
-
+// values
+// beats -- verify -- sanity check
+// game play with divs
+	//
+	//
+	//
+// win and lose 
+// consider adding W-A-R-Go
+// images
 
