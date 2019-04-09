@@ -1,7 +1,7 @@
 //- - - - - - - - - - - - - - - - - - - - - CLASSES
 class Player {
 	constructor() {
-		name: this.name 
+		name: name 
 		hand: [Card]
 		deck: []
 		score: 0
@@ -29,6 +29,7 @@ class Deck {
 			}
 		}
 	}
+
 	shuffle = (array) => {
 		let i = array.length
 		let j = 0
@@ -39,22 +40,39 @@ class Deck {
 				temp = array[i];
 				array[i] = array[j];
 				array[j] = temp;
-			}
+			}	
 			return array;
 	}
+
 	splitDeck() {
-		for(let i = 0; i < shuffledDeck.length; i+= 2){
-			this.playerHand.push(deck[i]);
-			this.compHand.push(deck[i+1]);
+		for(let i = 0; i < d.length; i += 2){
+			player1.deck.push(d[i]);
+			player2.deck.push(d[i++]);
+			console.log(d[i])
+			console.log(d[i++])
 		}
 	}
 
 	dealCards(){
 
 	}
+
+
+	beats(){
+		if(player1Hand > player2Hand){
+
+		}
+	}
+	
+	
+	winner(){
+		
+	}
+
+	play()
+		gameOn = true;
+
 }
-
-
 
 const d = new Deck();
 
@@ -73,6 +91,7 @@ const game = {
 	startGame() {
 		if(this.gameOn === false){
 			const player1 = new Player
+			const player2 = new Player
 		}
 	}
 }
