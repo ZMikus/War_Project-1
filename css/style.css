@@ -1,19 +1,29 @@
+body{
+
+}
+
 #gameboard {
 
 }
 
 .player1Deck {
-
+	height: 100px ;
+	float: left;
 }
 
 .player1Card {
-	
+
 }
 
 .player2Deck {
-
+	height: 100px ;
+	float: right;
 }
 
 .player2Card {
 
+}
+
+.img {
+	
 }

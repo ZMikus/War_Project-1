@@ -19,7 +19,7 @@ class Deck {
 	constructor() {
 		this.deck = [];
 
-		const suit = ['Spades', 'Diamonds', 'Clubs', 'Hearts'];
+		const suit = ['Clubs', 'Diamonds', 'Hearts', 'Spades'];
 		const number = ['2' ,'3', '4', '5', '6', '7', '8','9', '10', 'Jack', 'Queen', 'King', 'Ace'];
 		
 		for(let j = 0; j < number.length; j++) {
@@ -48,8 +48,6 @@ class Deck {
 		for(let i = 0; i < d.length; i += 2){
 			player1.deck.push(d[i]);
 			player2.deck.push(d[i++]);
-			console.log(d[i])
-			console.log(d[i++])
 		}
 	}
 
@@ -66,11 +64,12 @@ class Deck {
 	
 	
 	winner(){
-		
+
 	}
 
-	play()
+	play(){
 		gameOn = true;
+	}
 
 }
 
@@ -98,4 +97,8 @@ const game = {
 
 
 //- - - - - - - - - - - - - - - - - - - - - LISTENERS
+$('#begin-btn').on('click'), () => {
+	game.startGame()
+}
 
+$('.player1Deck')
