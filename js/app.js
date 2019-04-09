@@ -1,12 +1,12 @@
 //- - - - - - - - - - - - - - - - - - - - - CLASSES
-class Player {
-	constructor() {
-		name: name 
-		hand: [Card]
-		deck: []
-		score: 0
-	}
-}
+// class Player {
+// 	constructor() {
+// 		name: name 
+// 		hand: [Card]
+// 		deck: []
+// 		score: 0
+// 	}
+// }
 
 class Card {
 	constructor(number, suit) {
@@ -44,34 +44,18 @@ class Deck {
 			return array;
 	}
 
-	splitDeck() {
-		for(let i = 0; i < d.length; i += 2){
-			player1.deck.push(d[i]);
-			player2.deck.push(d[i++]);
+	dealDeck() {
+		for(let i = 0; i < 25; i++){
+			for(let j = 26; i < 52; j++)
+			player1Deck.push(d[i]);
+
+			player2Deck.push(d[j]);
+			}
 		}
-	}
-
-	dealCards(){
 
 	}
 
 
-	beats(){
-		if(player1Hand > player2Hand){
-
-		}
-	}
-	
-	
-	winner(){
-
-	}
-
-	play(){
-		gameOn = true;
-	}
-
-}
 
 const d = new Deck();
 
@@ -84,21 +68,41 @@ console.log(d.deck);
 //- - - - - - - - - - - - - - - - - - - - - GAME
 const game = {
 	gameOn: false,
+	player1Card: [].
+	player2Card: [],
 	player1Deck: [],
 	player2Deck: [],
+	player1Score: 0,
+	player2Score: 0,
 	turnNumber: 0,
 	startGame() {
-		if(this.gameOn === false){
-			const player1 = new Player
-			const player2 = new Player
+		if(game.gameOn === false){
+			game.gameOn = true
 		}
 	}
-}
+		checkWinner(){
+
+		}
+	}
+
 
 
 //- - - - - - - - - - - - - - - - - - - - - LISTENERS
-$('#begin-btn').on('click'), () => {
+$('#begin-btn').on('click', () => {
 	game.startGame()
-}
+});
 
-$('.player1Deck')
+$('.player1Deck').on('click', () => {
+
+});
+
+$('.player2').on('click', () => {
+
+});
+
+
+
+
+
+
+

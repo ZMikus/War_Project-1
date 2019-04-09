@@ -1,8 +1,9 @@
 body{
-
+	background-color: black;
 }
 
 #gameboard {
+	background-color: grey;
 
 }
 
@@ -25,5 +26,9 @@ body{
 }
 
 .img {
-	
+
+}
+
+#beginbutton{
+	position: center;
 }
