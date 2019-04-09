@@ -9,12 +9,10 @@
 // }
 
 class Card {
-	constructor(number, suit, value, suitSymbol) {
+	constructor(number, suit, value) {
 		this.number = number;
 		this.suit = suit;
-			//if statement for emojis
 		this.value = value;
-		this.suitSymbol = suitSymbol;
 	}
 }
 
@@ -23,7 +21,6 @@ class Deck {
 		this.deck = [];
 		const suit = ['Clubs', 'Diamonds', 'Hearts', 'Spades']
 		const number = ['2' ,'3', '4', '5', '6', '7', '8','9', '10', 'Jack', 'Queen', 'King', 'Ace'];
-		// const value == 2 -- 14
 
 			let x = 0;
 			for(let i = 0; i < suit.length; i++) {
@@ -50,31 +47,15 @@ class Deck {
 			}	
 			return array;
 	}
-
-	// dealDeck () {
-
-	// 	// deal to player 1
-	// 	for(let i = 0; i < 25; i++){
-	// 		player1Deck.push(d[i]);	
-	// 		console.log(player1Deck);		
-	// 	}
-	// 	// deal to player 2 using another separate for loop 
-	// 	for(let j = 26; i < 52; j++){
-	// 		player2Deck.push(d[j]);
-	// 		console.log(player2Deck);
-	// 	}
-	// }
 }
 
 
 
 const d = new Deck();
 
-//console.log(d.deck);
-
 d.shuffle(d.deck);
 
-//console.log(d.deck);
+console.log(d.deck);
 
 //- - - - - - - - - - - - - - - - - - - - - GAME
 const game = {
@@ -86,42 +67,54 @@ const game = {
 	player1Score: 0,
 	player2Score: 0,
 	turnNumber: 0,
+	shuffledDeck: [],
 	startGame() {
 		if(game.gameOn === false){
 			game.gameOn = true
+			const gameDeck = new Deck
+			gameDeck.shuffle(gameDeck.deck)
+			this.shuffledDeck.push(gameDeck)
+			this.dealDeck(this.shuffledDeck)
 		}
 	},
-	dealDeck () {
+	dealDeck (array) {
 
 		// deal to player 1
-		for(let i = 0; i < 25; i++){
-			player1Deck.push(d[i]);	
-			console.log(player1Deck);		
+		for(let i = 0; i <= array.length - 26; i++){
+			this.player1Deck.push(this.shuffledDeck[i]);	
+			console.log(this.shuffledDeck[i]);		
 		}
 		// deal to player 2 using another separate for loop 
-		for(let j = 26; i < 52; j++){
-			player2Deck.push(d[j]);
-			console.log(player2Deck);
-		}
-	}
+		// for(let j = 0; j <= 26; j++){
+		// 	this.player2Deck.push(this.shuffledDeck[j]);
+		// 	console.log(this.shuffledDeck[j]);
+		// }
+	},
 
 //moves card from game.player1Deck to game.player1Card
-	// playCard() {
-	// 	game.player1Card.push(player1Deck[0])
-	// 	game.player2Card.push(player2Deck[0])
+	playCard() {
+		this.player1Card.unshift(player1Deck[0])
+		this.player2Card.unshift(player2Deck[0])
+ 	},
 
-	// },
+	checkHandWinner() {
+	 	if(this.player1Card.value > this.player2Card.value){
+			this.player1Score = (player1Score += 2)
+			this.player1Deck.push(this.player1Card)
+			this.player1Deck.push(this.player2Card)
 
-	// checkHandWinner(){
-	// 	if(game.player1Card > game.player2Card){
+		}else if(this.player1Card.value < this.player2Card.value){
+			this.player2Score = (player2Score += 2)
+			this.player2Deck.push(this.player1Card)
+			this.player2Deck.push(this.player2Card)
 
-	// 	}else if(game.player1Card < game.player2Card){
-
-
-	// 	}else if(game.player1Card == game.player2Card){
-
-	// 	}
-	// },
+	 	}else{
+	 		this.player1Score = (player1Score += 1)
+	 		this.player1Deck.push(this.player1Card)
+	 		this.player2Score = (player2Score += 1)
+	 		this.player2Deck.push(this.player2Card)
+	 	}
+	},
 	// declareWinner(){
 	// 	// if 
 	// }
