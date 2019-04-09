@@ -51,11 +51,7 @@ class Deck {
 
 
 
-const d = new Deck();
 
-d.shuffle(d.deck);
-
-console.log(d.deck);
 
 //- - - - - - - - - - - - - - - - - - - - - GAME
 const game = {
@@ -73,79 +69,84 @@ const game = {
 			game.gameOn = true
 			const gameDeck = new Deck
 			gameDeck.shuffle(gameDeck.deck)
-			this.shuffledDeck.push(gameDeck)
+			this.fillGameDeck(gameDeck.deck)
+			//console.log(this.shuffledDeck, ' This is the shuffledDeck');
 			this.dealDeck(this.shuffledDeck)
 		}
 	},
-	dealDeck (array) {
-
-		// deal to player 1
-		for(let i = 0; i <= array.length - 26; i++){
-			this.player1Deck.push(this.shuffledDeck[i]);	
-			console.log(this.shuffledDeck[i]);		
+	fillGameDeck(array) {
+		for(let i = 0; i < array.length; i++) {
+			this.shuffledDeck.push(array[i])
 		}
-		// deal to player 2 using another separate for loop 
-		// for(let j = 0; j <= 26; j++){
-		// 	this.player2Deck.push(this.shuffledDeck[j]);
-		// 	console.log(this.shuffledDeck[j]);
-		// }
 	},
+	dealDeck (array) {
+		for(let i = 0; i < array.length - 1; i + 2){
+			this.player1Deck.push(array[i])
+			this.player2Deck.push(array[i + 1])
+			array.splice(i, 1)
+			array.splice(i + 1, 1)
+			//console.log(this.player1Deck, ' This is player 1');
+			//console.log(this.player2Deck, ' This is player 2');
+		}
+	}
 
 //moves card from game.player1Deck to game.player1Card
 	playCard() {
 		this.player1Card.unshift(player1Deck[0])
 		this.player2Card.unshift(player2Deck[0])
+		console.log();
  	},
+ }
 
-	checkHandWinner() {
-	 	if(this.player1Card.value > this.player2Card.value){
-			this.player1Score = (player1Score += 2)
-			this.player1Deck.push(this.player1Card)
-			this.player1Deck.push(this.player2Card)
+// 	checkHandWinner() {
+// 	 	if(this.player1Card.value > this.player2Card.value){
+// 			this.player1Score = (player1Score += 2)
+// 			this.player1Deck.push(this.player1Card)
+// 			this.player1Deck.push(this.player2Card)
 
-		}else if(this.player1Card.value < this.player2Card.value){
-			this.player2Score = (player2Score += 2)
-			this.player2Deck.push(this.player1Card)
-			this.player2Deck.push(this.player2Card)
+// 		}else if(this.player1Card.value < this.player2Card.value){
+// 			this.player2Score = (player2Score += 2)
+// 			this.player2Deck.push(this.player1Card)
+// 			this.player2Deck.push(this.player2Card)
 
-	 	}else{
-	 		this.player1Score = (player1Score += 1)
-	 		this.player1Deck.push(this.player1Card)
-	 		this.player2Score = (player2Score += 1)
-	 		this.player2Deck.push(this.player2Card)
-	 	}
-	},
-	// declareWinner(){
-	// 	// if 
-	// }
-}
-
-
-
-//- - - - - - - - - - - - - - - - - - - - - LISTENERS
-$('#begin-btn').on('click', () => {
-	game.startGame()
-});
-
-$('.player1Deck').on('click', () => {
-
-});
-
-$('.player2').on('click', () => {
-
-});
+// 	 	}else{
+// 	 		this.player1Score = (player1Score += 1)
+// 	 		this.player1Deck.push(this.player1Card)
+// 	 		this.player2Score = (player2Score += 1)
+// 	 		this.player2Deck.push(this.player2Card)
+// 	 	}
+// 	},
+// 	// declareWinner(){
+// 	// 	// if 
+// 	// }
+// }
 
 
 
+// //- - - - - - - - - - - - - - - - - - - - - LISTENERS
+// $('#begin-btn').on('click', () => {
+// 	game.startGame()
+// });
+
+// $('.player1Deck').on('click', () => {
+
+// });
+
+// $('.player2').on('click', () => {
+
+// });
 
 
-// values
-// beats -- verify -- sanity check
-// game play with divs
-	//
-	//
-	//
-// win and lose 
-// consider adding W-A-R-Go
-// images
+
+
+
+// // values
+// // beats -- verify -- sanity check
+// // game play with divs
+// 	//
+// 	//
+// 	//
+// // win and lose 
+// // consider adding W-A-R-Go
+// // images
 
