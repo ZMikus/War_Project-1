@@ -38,7 +38,7 @@ class Deck {
 			}
 			return array;
 	}	
-};
+}
 
 //- - - - - - - - - - - - - - - - - - - - - GAME
 
@@ -107,7 +107,7 @@ const game = {
 	 		this.player2Deck.push(this.player2Card)
 	 	}
 	},
-declareWinner(){
+	declareWinner(){
 		if(this.player1Deck == 0 || this.player2Deck == 0){
 
 		}
